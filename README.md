@@ -75,4 +75,88 @@ Instruções de Uso:
 - Vermelho: 50% a 74%;
 - Vermelho Piscante: 75% a 95%.
 
-Código Fonte: C++ 
+Código Fonte: 
+
+```C++
+#include <LiquidCrystal.h>
+
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2); // Pinos RS, E, D4, D5, D6, D7 do LCD
+
+const int potentiometerPin = A0; // Pino do potenciômetro
+const int redLEDPin = 8;        // Pino do LED RGB (vermelho)
+const int greenLEDPin = 9;      // Pino do LED RGB (verde)
+const int blueLEDPin = 10;      // Pino do LED RGB (azul)
+
+void setup() {
+  pinMode(redLEDPin, OUTPUT);
+  pinMode(greenLEDPin, OUTPUT);
+  pinMode(blueLEDPin, OUTPUT);
+  
+  lcd.begin(16, 2);
+  lcd.setCursor(0, 0); // Define o cursor na primeira linha
+  lcd.print("UV Intensity:");
+  randomSeed(analogRead(0)); // Inicializa o gerador de números aleatórios
+}
+
+void loop() {
+  int sensorValue = analogRead(potentiometerPin); // Leitura do potenciômetro
+  int uvIntensity = map(sensorValue, 0, 1023, 0, 100); // Mapeia o valor para um intervalo de 0 a 100
+  
+  lcd.setCursor(0, 1); // Define o cursor na segunda linha
+  if (uvIntensity == 0) {
+    lcd.print("UV Desligado   ");
+    setColor(0, 0, 0); // Desliga o LED RGB
+  } else {
+    lcd.print(uvIntensity);
+    lcd.print("% UV     ");
+  
+    // Iniciar a análise
+    lcd.setCursor(0, 0);
+    lcd.print("Analisando...   ");
+    delay(5000); // Espera 5 segundos para simular a análise
+  
+    // Gerar porcentagem aleatória de microplásticos
+    int microplasticPercentage = random(5, 95); // Gera um número aleatório entre 5 e 95
+  
+    // Exibir o resultado da análise
+    lcd.setCursor(0, 0);
+    lcd.print("Microplastics: ");
+    lcd.setCursor(0, 1);
+    lcd.print(microplasticPercentage);
+    lcd.print("%         ");
+  
+    // Definir cor do LED RGB baseado na porcentagem
+    if (microplasticPercentage == 0) {
+      setColor(0, 255, 0); // Verde sólido para 0%
+    } else if (microplasticPercentage < 25) {
+      setColor(0, 0, 255); // Azul sólido para 1% a 24%
+    } else if (microplasticPercentage < 50) {
+      setColor(255, 255, 0); // Amarelo sólido para 25% a 49%
+    } else if (microplasticPercentage < 75) {
+      setColor(255, 0, 0); // Vermelho sólido para 50% a 74%
+    } else {
+      blinkRed(); // Vermelho piscante para 75% a 95%
+    }
+  
+    delay(5000); // Espera 5 segundos antes da próxima leitura
+  }
+}
+
+void setColor(int red, int green, int blue) {
+  analogWrite(redLEDPin, red);
+  analogWrite(greenLEDPin, green);
+  analogWrite(blueLEDPin, blue);
+}
+
+void blinkRed() {
+  for (int i = 0; i < 5; i++) {
+    setColor(255, 0, 0); // Vermelho
+    delay(200);
+    setColor(0, 0, 0); // Desliga
+    delay(200);
+  }
+}
+```
+
+Link Tinkercad:
+[https://www.tinkercad.com/things/8McWzDCkbBD-stunning-kup-elzing/editel?sharecode=fNOdlG9uXO9SzfSDZnuoSbg2tBs3gJOHCzY2ppiWaOw]
