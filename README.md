@@ -1,23 +1,28 @@
 # GS-EdgeComputing
 
 Pedro Henrique Martins Alves dos Santos RM: 558107
+
 Victor de Almeida Gonçalves RM: 558799
+
 Felipe Cerboncini Cordeiro RM: 554909
 
 Projeto: Detecção de Microplásticos na Água com Luz UV
 
 Descrição:
+
 Este projeto utiliza um Arduino Uno, um potenciômetro, um display LCD 16x2 e um LED RGB para simular um sistema de detecção de microplásticos na água. A intensidade
 da luz UV é controlada por um potenciômetro, e o display LCD mostra a intensidade da luz UV utilizada e uma porcentagem aleatória de microplásticos detectados. O 
 LED RGB muda de cor com base na porcentagem de microplásticos detectados.
 
 Funcionalidades:
+
 - Controle da intensidade da luz UV via potenciômetro;
 - Exibição da intensidade da luz UV no display LCD;
 - Geração e exibição de uma porcentagem aleatória de microplásticos detectados;
 - Indicação visual da quantidade de microplásticos detectados através de um LED RGB.
 
 Itens Utilizados:
+
 - Arduino Uno;
 - Potenciômetro;
 - Display LCD 16x2;
@@ -27,9 +32,11 @@ Itens Utilizados:
 - Protoboard.
 
 Biblioteca: 
+
 - LiquidCrystal.
 
 Montagem:
+
 1.Arduino Uno: Conecte o Arduino Uno à protoboard.
 2.Potenciômetro:
 - Conecte uma extremidade ao 5V do Arduino;
