@@ -162,3 +162,7 @@ Link Tinkercad:
 
 [https://www.tinkercad.com/things/8McWzDCkbBD-stunning-kup-elzing/editel?sharecode=fNOdlG9uXO9SzfSDZnuoSbg2tBs3gJOHCzY2ppiWaOw]
 
+Vídeo Explicativo: 
+
+[https://www.youtube.com/watch?v=UOBciaZFqJc&ab_channel=VictorGon%C3%A7alves]
+
